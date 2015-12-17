@@ -28,6 +28,16 @@ end
 activate :relative_assets
 set :relative_links, true
 
+# Deployment settings
+activate :deploy do |deploy|
+  deploy.method = :sftp
+  deploy.host = 'sftp.example.com'
+  deploy.user = 'user'
+  deploy.port = 22
+  deploy.path = '//srv/www/site'
+  deploy.build_before = true
+end
+
 # Build Configuration
 configure :build do
   activate :minify_css
